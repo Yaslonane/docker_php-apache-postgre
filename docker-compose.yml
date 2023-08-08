@@ -19,9 +19,16 @@ services:
         POSTGRES_PASSWORD: MYSQL_ROOT_PASSWORD
         POSTGRES_DB: MY_DATABASE
         POSTGRES_USER: MYSQL_USER
-  #adminer:
-  #  container_name: adminer
-  #  image: adminer
-  #  restart: always
-  #  ports:
-  #    - 8080:8080
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: yaslonane@yandex.ru
+      PGADMIN_DEFAULT_PASSWORD: A1qwerty
+    ports:
+      - 8080:80
