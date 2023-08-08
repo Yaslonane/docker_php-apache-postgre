@@ -1,0 +1,27 @@
+version: '2'
+services:
+  php-apache-environment:
+    container_name: php-apache
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./app:/var/www/html/
+    ports:
+      - 8000:80
+  db:
+    container_name: db
+    image: postgres
+    restart: always
+    environment:
+        POSTGRES_PASSWORD: MYSQL_ROOT_PASSWORD
+        POSTGRES_DB: MY_DATABASE
+        POSTGRES_USER: MYSQL_USER
+  #adminer:
+  #  container_name: adminer
+  #  image: adminer
+  #  restart: always
+  #  ports:
+  #    - 8080:8080
