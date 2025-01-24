@@ -1,7 +1,8 @@
-version: '3.7'
+#version: '3.7'
 services:
   php-apache:
     container_name: php-apache
+    user: www-data:www-data
     build:
       context: ./php
       dockerfile: Dockerfile
@@ -11,10 +12,12 @@ services:
     volumes:
       - ./app:/var/www/html/
     ports:
-      - 8000:80
+      - 80:80
+    environment:
+        - TZ=Europe/Moscow
   db:
     container_name: db
-    image: postgres
+    image: postgres:15
     restart: always
     environment:
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
