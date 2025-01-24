@@ -1,7 +1,7 @@
 #version: '3.7'
 services:
-  php-apache:
-    container_name: php-apache
+  php-apache2:
+    container_name: php-apache2
     user: www-data:www-data
     build:
       context: ./php
@@ -36,3 +36,9 @@ services:
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     ports:
       - 8080:80
+      
+      
+#sudo chmod -R 777 /home/andrey/docker_pap/app     
+#composer create-project laravel/laravel .
+#composer require barryvdh/laravel-debugbar --dev
+

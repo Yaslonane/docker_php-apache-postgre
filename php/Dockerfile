@@ -1,4 +1,5 @@
-FROM php:8.1.22-apache
+FROM php:8.4-apache
+#FROM php:8.1.22-apache
 
 COPY 000-default.conf /etc/apache2/sites-enabled/
 
